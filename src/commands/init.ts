@@ -6,37 +6,33 @@ import * as fuzzy from 'fuzzy'
 import * as path from 'path'
 import * as chalk from 'chalk'
 
-
-
-
 inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'));
 var prepend = require('prepend');
-var figlet = require('figlet');
-var packages = ['iam', 's3', 'lambda', 'elasticloadbalancing', 'elasticloadbalancingv2', 'ec2', 'cloudwatch', 'amplify', 'appconfig'];
+var packages = ['s3', 'ec2', 'dynamodb', 'iam', 'lambda', 'accessanalyzer', 'accessanalyzer', 'amazonmq', 'amplify', 'apigateway', 'apigatewayv2', 'appconfig', 'applicationautoscaling', 'appmesh', 'appstream', 'appsync', 'athena', 'autoscaling', 'autoscaling-common', 'autoscaling-hooktargets', 'autoscalingplans', 'backup', 'batch', 'budgets', 'cassandra', 'ce', 'certificatemanager', 'chatbot', 'cloud9', 'cloudformation', 'cloudfront', 'cloudtrail', 'cloudwatch', 'cloudwatch-actions', 'codebuild', 'codecommit', 'codedeploy', 'codeguruprofiler', 'codepipeline', 'codepipeline-actions', 'codestar', 'codestarconnections', 'codestarnotifications', 'cognito', 'config', 'datapipeline', 'dax', 'detective', 'directoryservice', 'dlm', 'dms', 'docdb', 'dynamodb-global', 'ecr', 'ecr-assets', 'ecs', 'ecs-patterns', 'efs', 'eks', 'eks-legacy', 'elasticache', 'elasticbeanstalk', 'elasticloadbalancing', 'elasticloadbalancingv2', 'elasticloadbalancingv2-actions', 'elasticloadbalancingv2-targets', 'elasticsearch', 'emr', 'events', 'events-targets', 'eventschemas', 'fms', 'fsx', 'gamelift', 'globalaccelerator', 'glue', 'greengrass', 'guardduty', 'imagebuilder', 'inspector', 'iot', 'iot1click', 'iotanalytics', 'iotevents', 'iotthingsgraph', 'kinesis', 'kinesisanalytics', 'kinesisfirehose', 'kms', 'lakeformation', 'lambda-destinations', 'lambda-event-sources', 'lambda-nodejs', 'logs', 'logs-destinations', 'macie', 'managedblockchain', 'mediaconvert', 'medialive', 'mediastore', 'msk', 'neptune', 'networkmanager', 'opsworks', 'opsworkscm', 'pinpoint', 'pinpointemail', 'qldb', 'ram', 'rds', 'redshift', 'resourcegroups', 'robomaker', 'route53', 'route53-patterns', 'route53-targets', 'route53resolver', 's3-assets', 's3-deployment', 's3-notifications', 'sagemaker', 'sam', 'sdb', 'secretsmanager', 'securityhub', 'servicecatalog', 'servicediscovery', 'ses', 'ses-actions', 'sns', 'sns-subscriptions', 'sqs', 'ssm', 'stepfunctions', 'stepfunctions-tasks', 'synthetics', 'transfer', 'waf', 'wafregional', 'wafv2', 'workspaces',];
 
 export default class Init extends Command {
-  static description = 'Initializes your CDK-app, installs CDK-packages and imports them into your Stack.ts file.'
-//Questions
+  static description = 'Initializes your CDK-project, installs CDK-packages and imports them into your Stack.ts file.'
+  //Questions
   async run() {
-    console.log('\nWelcome to' + chalk.red.bold(' RocketCDK!') +'\n\nInitialize your CDK-app, install CDK-packages and autoimport them into your Stack.ts file.\n')
+    console.log('\nWelcome to' + chalk.red.bold(' RocketCDK!') + '\n\nInitialize your CDK-project, install CDK-packages and autoimport them into your Stack.ts file.\n')
     inquirer
       .prompt([
         {
           name: 'language',
-          message: 'Select a' + chalk.cyan(' language:') ,
+          message: 'Select a' + chalk.cyan(' language:'),
           type: 'list',
           choices: [{ name: 'typescript' }],
         },
         {
           name: 'version',
-          message: 'Type a CDK version'+ chalk.cyan(' (eg: 1.45.0)')+', (latest default):',
+          message: 'Type a CDK version' + chalk.cyan(' (eg: 1.45.0)') + ', (latest default):',
           type: 'input',
         },
         {
           type: 'checkbox-plus',
           name: 'packages',
           message: 'Press ' + chalk.cyan('Space') + ' to select packages, type to search and' + chalk.cyan(' Enter ') + 'to install:',
-          pageSize: 5,
+          pageSize: 7,
           highlight: true,
           searchable: true,
           source: function (answersSoFar: any, input: any) {
@@ -51,26 +47,27 @@ export default class Init extends Command {
           }
         }
       ])
-//Answers
+      //Answers
       .then(answers => {
         if (answers.version === "") {
         }
-        else{
+        else {
           answers.version = "@" + answers.version
         }
         let packages = answers.packages;
         var packages1: any = []
-        var importpack:any = []
+        var importpack: any = []
 
         function installpackages() {
           for (var i of packages) {
             packages1.push("@aws-cdk/aws-" + i + answers.version);
           }
         }
-        
+
         function importpackages() {
           for (var i of packages) {
-            importpack.push("\nimport * as " + i + " from '@aws-cdk/aws-" + i + "'");
+            var b = i.replace('-', '').replace('-', '');
+            importpack.push("\nimport * as " + b + " from '@aws-cdk/aws-" + i + "'");
           }
         }
         installpackages()
@@ -87,8 +84,8 @@ export default class Init extends Command {
           console.log(stdout);
           console.log(stderr);
           cli.action.stop()
-          cli.action.start('Installing aws-cdk packages')
-          exec('npm install aws-cdk' + answers.version + ' @aws-cdk/core' + answers.version + ' @aws-cdk/assert' + answers.version , function (error, stdout, stderr) {
+          cli.action.start('Installing CDK packages')
+          exec('npm install aws-cdk' + answers.version + ' @aws-cdk/core' + answers.version + ' @aws-cdk/assert' + answers.version, function (error, stdout, stderr) {
             if (error) {
               console.log(error.stack);
               console.log('Error code: ' + error.code);
@@ -105,10 +102,9 @@ export default class Init extends Command {
               // console.log(stdout);
               // console.log(stderr);
               cli.action.stop('Installed these packages:' + stdout)
-            }
-            )
+            })
             var folder = path.basename(path.resolve(process.cwd()))
-            prepend('./lib/' + folder + '-stack.ts', importpack2, function (err:any) {
+            prepend('./lib/' + folder + '-stack.ts', importpack2, function (err: any) {
               if (err) return console.log(err);
             });
           });

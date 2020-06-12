@@ -1,6 +1,7 @@
-RocketCDK
-
+rocketcdk
 =========
+
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/rocketcdk.svg)](https://npmjs.org/package/rocketcdk)
@@ -18,9 +19,9 @@ $ npm install -g rocketcdk
 $ rocketcdk COMMAND
 running command...
 $ rocketcdk (-v|--version|version)
-rocketcdk/0.0.0 darwin-x64 node-v13.10.1
+rocketcdk/0.0.15 darwin-x64 node-v13.10.1
 $ rocketcdk --help [COMMAND]
-USAGE test
+USAGE
   $ rocketcdk COMMAND
 ...
 ```
@@ -28,14 +29,14 @@ USAGE test
 # Commands
 <!-- commands -->
 * [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
-* [`rocketcdk init [FILE]`](#rocketcdk-init-file)
+* [`rocketcdk init`](#rocketcdk-init)
 
 ## `rocketcdk help [COMMAND]`
 
 display help for rocketcdk
 
 ```
-USAGE test
+USAGE
   $ rocketcdk help [COMMAND]
 
 ARGUMENTS
@@ -47,19 +48,14 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
 
-## `rocketcdk init [FILE]`
+## `rocketcdk init`
 
-describe the command here
+Initializes your CDK-project, installs CDK-packages and imports them into your Stack.ts file.
 
 ```
-USAGE test
-  $ rocketcdk init [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+USAGE
+  $ rocketcdk init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.0/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.15/src/commands/init.ts)_
 <!-- commandsstop -->
