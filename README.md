@@ -26,7 +26,7 @@ $ npm install aws-cdk@1.45.0 @aws-cdk/core@1.45.0 @aws-cdk/assert@1.45.0
 ```
 Install all chosen packages in your specified version.
 ```sh-session
-$ npm install  @aws-cdk/aws-s3@1.45.0 @aws-cdk/aws-iam@1.45.0
+$ npm install @aws-cdk/aws-s3@1.45.0 @aws-cdk/aws-iam@1.45.0
 ```
 Writes all your dependencies into your 'stack.ts' file.
 
