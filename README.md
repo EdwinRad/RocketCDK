@@ -13,7 +13,7 @@ Try me:
 $ npx rocketcdk init
 ```
 ## Why?
-I find installing packages and writing the import statement into my stack a time-consuming, error-prone process that often enough results in version mismatch.
+I don't like installing every single package and write the import statements into my stack.ts.
 
 ## What it does:
 Initialize a new CDK project
@@ -47,59 +47,34 @@ And you're ready to go!
 # Commands
 
 <!-- commands -->
-
-*  [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
-
-*  [`rocketcdk init`](#rocketcdk-init)
-
-  
+* [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
+* [`rocketcdk init`](#rocketcdk-init)
 
 ## `rocketcdk help [COMMAND]`
 
-  
-
 display help for rocketcdk
 
-  
-
 ```
-
 USAGE
-
-$ rocketcdk help [COMMAND]
-
-  
+  $ rocketcdk help [COMMAND]
 
 ARGUMENTS
-
-COMMAND command to show help for
-
-  
+  COMMAND  command to show help for
 
 OPTIONS
-
---all see all commands in CLI
-
+  --all  see all commands in CLI
 ```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
 
 ## `rocketcdk init`
 
-  
-
 Initializes your CDK-project, installs CDK-packages and imports them into your Stack.ts file.
 
-  
-
 ```
-
 USAGE
-
-$ rocketcdk init
-
+  $ rocketcdk init
 ```
 
-  
-
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.16/src/commands/init.ts)_
-
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.18/src/commands/init.ts)_
 <!-- commandsstop -->
