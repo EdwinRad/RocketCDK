@@ -7,13 +7,16 @@
 [![License](https://img.shields.io/npm/l/rocketcdk.svg)](https://github.com/EdwinRad/rocketcdk/blob/master/package.json)
 
 
-  ## Initializes your CDK-project, installs packages and auto-imports them into your Stack.ts.  All in one Command.
+## Initializes your CDK-project, installs packages and auto-imports them into your Stack.ts.  All in one Command.
 Try me:
 ```sh-session
 $ npx rocketcdk init
 ```
-## Why?
-I don't like installing every single package and write the import statements into my stack.ts.
+## Update all your packages and CDK version in one step.
+Try me:
+```sh-session
+$ npx rocketcdk update
+```
 
 ## What it does:
 Initialize a new CDK project
@@ -49,6 +52,7 @@ And you're ready to go!
 <!-- commands -->
 * [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
 * [`rocketcdk init`](#rocketcdk-init)
+* [`rocketcdk update`](#rocketcdk-update)
 
 ## `rocketcdk help [COMMAND]`
 
@@ -76,5 +80,16 @@ USAGE
   $ rocketcdk init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.18/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.19/src/commands/init.ts)_
+
+## `rocketcdk update`
+
+Update your AWS-CDK version and your CDK-packages versions.
+
+```
+USAGE
+  $ rocketcdk update
+```
+
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.19/src/commands/update.ts)_
 <!-- commandsstop -->
