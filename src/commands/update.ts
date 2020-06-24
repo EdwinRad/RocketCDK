@@ -44,7 +44,7 @@ export default class Update extends Command {
           }
           installpackages()
           var installpackages2 = installpackages1.join(" ")
-          exec('npm install aws-cdk@' + answers.version + ' @aws-cdk/core@' + answers.version + ' @aws-cdk/assert@' + answers.version, function (error, stdout, stderr) {
+          exec('npm install aws-cdk@' + answers.version + ' @aws-cdk/assert@' + answers.version, function (error, stdout, stderr) {
             if (error) {
               throw new Error(error.message);
             }
