@@ -18,6 +18,7 @@ export default class Update extends Command {
           name: 'version',
           message: 'Type a CDK version that you want your packages and CDK version to be updated' + chalk.cyan(' (eg: 1.45.0)') + ', (latest default):',
           type: 'input',
+          default: 'latest'
         },
       ])
       .then(answers => {

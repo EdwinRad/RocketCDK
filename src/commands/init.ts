@@ -77,9 +77,7 @@ export default class Init extends Command {
         cli.action.start('Initializing your CDK project in ' + answers.language)
         exec('cdk init -l ' + answers.language, function (error, stdout, stderr) {
           if (error) {
-            console.log(error.stack);
-            console.log('Error code: ' + error.code);
-            console.log('Signal received: ' + error.signal);
+            throw new Error(error.message);
           }
           console.log(stdout);
           console.log(stderr);
@@ -87,17 +85,13 @@ export default class Init extends Command {
           cli.action.start('Installing CDK packages')
           exec('npm install aws-cdk' + answers.version + ' @aws-cdk/core' + answers.version + ' @aws-cdk/assert' + answers.version, function (error, stdout, stderr) {
             if (error) {
-              console.log(error.stack);
-              console.log('Error code: ' + error.code);
-              console.log('Signal received: ' + error.signal);
+              throw new Error(error.message);
             }
             console.log(stdout);
             console.log(stderr);
             exec('npm install ' + packages2, function (error, stdout, stderr) {
               if (error) {
-                console.log(error.stack);
-                console.log('Error code: ' + error.code);
-                console.log('Signal received: ' + error.signal);
+                throw new Error(error.message);
               }
               // console.log(stdout);
               // console.log(stderr);
