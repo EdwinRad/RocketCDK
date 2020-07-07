@@ -10,13 +10,13 @@ export default class Update extends Command {
   static description = 'Update your AWS-CDK version and your CDK-packages versions.'
 
   async run() {
-    console.log(chalk.cyan('\nUpdates your CDK package.json to your favourite version.\n '))
+    console.log(chalk.cyan('\nUpdates your CDK packages in package.json to your favourite version.\n '))
 
     inquirer
       .prompt([
         {
           name: 'version',
-          message: 'Type a CDK version that you want your packages and CDK version to be updated' + chalk.cyan(' (eg: 1.45.0)') + ', (latest default):',
+          message: 'Type a CDK version that you want your CDK packages + version to be updated' + chalk.cyan(' (eg: 1.50.0)') + ', (latest default):',
           type: 'input',
           default: 'latest'
         },

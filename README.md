@@ -80,7 +80,7 @@ USAGE
   $ rocketcdk init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.19/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.0/src/commands/init.ts)_
 
 ## `rocketcdk update`
 
@@ -91,5 +91,5 @@ USAGE
   $ rocketcdk update
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.0.19/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.0/src/commands/update.ts)_
 <!-- commandsstop -->
