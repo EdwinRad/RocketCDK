@@ -52,6 +52,7 @@ And you're ready to go!
 <!-- commands -->
 * [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
 * [`rocketcdk init`](#rocketcdk-init)
+* [`rocketcdk up [FILE]`](#rocketcdk-up-file)
 * [`rocketcdk update`](#rocketcdk-update)
 
 ## `rocketcdk help [COMMAND]`
@@ -80,7 +81,23 @@ USAGE
   $ rocketcdk init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.0/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/init.ts)_
+
+## `rocketcdk up [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ rocketcdk up [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/up.ts)_
 
 ## `rocketcdk update`
 
@@ -91,5 +108,5 @@ USAGE
   $ rocketcdk update
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.0/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/update.ts)_
 <!-- commandsstop -->

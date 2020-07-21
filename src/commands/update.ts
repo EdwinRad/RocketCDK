@@ -16,7 +16,7 @@ export default class Update extends Command {
       .prompt([
         {
           name: 'version',
-          message: 'Type a CDK version that you want your CDK packages + version to be updated' + chalk.cyan(' (eg: 1.50.0)') + ', (latest default):',
+          message: 'Type a CDK version that you want your CDK packages + version to be updated to' + chalk.cyan(' (eg: 1.50.0)') + ':',
           type: 'input',
           default: 'latest'
         },
