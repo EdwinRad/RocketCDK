@@ -15,7 +15,7 @@ $ npx rocketcdk init
 ## Update all your packages and CDK version in one step.
 Try me:
 ```sh-session
-$ npx rocketcdk update
+$ npx rocketcdk up
 ```
 
 ## What it does:
@@ -52,7 +52,7 @@ And you're ready to go!
 <!-- commands -->
 * [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
 * [`rocketcdk init`](#rocketcdk-init)
-* [`rocketcdk up [FILE]`](#rocketcdk-up-file)
+* [`rocketcdk up`](#rocketcdk-up)
 * [`rocketcdk update`](#rocketcdk-update)
 
 ## `rocketcdk help [COMMAND]`
@@ -81,32 +81,33 @@ USAGE
   $ rocketcdk init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/init.ts)_
 
-## `rocketcdk up [FILE]`
+## `rocketcdk up`
 
-describe the command here
+Updates your CDK packages to your favourite version.
 
 ```
 USAGE
-  $ rocketcdk up [FILE]
+  $ rocketcdk up
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/up.ts)_
+_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/up.ts)_
 
 ## `rocketcdk update`
 
-Update your AWS-CDK version and your CDK-packages versions.
+Updates your CDK packages to your favourite version.
 
 ```
 USAGE
   $ rocketcdk update
+
+OPTIONS
+  -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.1/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/update.ts)_
 <!-- commandsstop -->

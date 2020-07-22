@@ -8,19 +8,15 @@ export default class Up extends Command {
   static description = 'Updates your CDK packages to your favourite version.'
 
   static flags = {
-    version: flags.string({ char: 'v', description: 'input a version: RocketCDK up -v 1.50.0' }),
+    version: flags.string({ char: 'v', description: 'input a version: RocketCDK up -v 1.50.0', default: 'latest' }),
   }
 
   async run() {
-    const { flags } = this.parse(Up)
-    //Input Validation
-    var validation: any = flags.version
-    var regex = /^\d\.\d\d\.\d$/g;
-    if (regex.test(validation)) {
-
+    function update() {
       // Check if TS or Python
       if (fs.existsSync('package.json')) {
         //TS
+        cli.action.start('3, 2, 1, zero. All engines running, updating CDK packages.')
         var packages1: any = []
         fs.readFile('package.json', (err, data: any) => {
           if (err) throw err;
@@ -44,8 +40,7 @@ export default class Up extends Command {
           }
           installpackages()
           var installpackages2 = installpackages1.join(" ")
-          cli.action.start('3, 2, 1, zero. All engines running, installing aws-cdk packages.')
-          exec('npm install aws-cdk@' + flags.version + ' @aws-cdk/assert@' + flags.version, function (error, stdout, stderr) {
+          exec('npm install @types/jest aws-cdk@' + flags.version + ' @aws-cdk/assert@' + flags.version, function (error, stdout, stderr) {
             if (error) {
               throw new Error(error.message);
             }
@@ -56,7 +51,7 @@ export default class Up extends Command {
               }
               console.log(stdout);
               console.log(stderr);
-              cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK version ${flags.version}.`))
+              cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @${flags.version}.`))
             })
           });
 
@@ -64,34 +59,78 @@ export default class Up extends Command {
       }
       //Python
       else if (fs.existsSync('setup.py')) {
-        fs.readFile('setup.py', 'utf8', (err, data: any) => {
-          if (err) throw err;
-          let regexp = /(aw.+)/g;
-          let result = data.match(regexp)
-          for (var i of result) {
-            let datareplaced = i.split("1")[0] + flags.version + '",';
-            var data = data.replace(i, datareplaced)
-          }
-          fs.writeFile('setup.py', data, function (err) {
-            if (err) {
-              return console.log(err);
-            }
-          });
-          cli.action.start('3, 2, 1, zero. All engines running, installing aws-cdk packages.')
-          exec('pip install -r requirements.txt', function (error, stdout, stderr) {
+        //If latest:
+        if (flags.version == 'latest') {
+          cli.action.start('3, 2, 1, zero. All engines running, updating CDK packages.')
+          exec('pip freeze > requirements.txt', function (error, stdout, stderr) {
             if (error) {
               throw new Error(error.message);
             }
-            console.log(stdout);
-            cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK version ${flags.version}.`))
-          }
-          );
-        });
+            fs.readFile('requirements.txt', 'utf8', function read(err, data) {
+              if (err) throw err;
+              let regexp = /(aws-cdk.+)/g;
+              let result: any = data.match(regexp)
+              for (var i of result) {
+                let datareplaced = i.split("=")[0];
+                data = data.replace(i, datareplaced)
+              }
+              fs.writeFile('requirements.txt', data, function (err) {
+                if (err) throw err;
+                exec('pip install -r requirements.txt -U', function (error, stdout, stderr) {
+                  if (error) {
+                    throw new Error(error.message);
+                  }
+                  console.log(stdout);
+                  cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @latest.`))
+                });
+              });
+            });
+          })
+        }
+        else {
+          //If version specified
+          cli.action.start('3, 2, 1, zero. All engines running, updating CDK packages.')
+          exec('pip freeze > requirements.txt', function (error, stdout, stderr) {
+            if (error) {
+              throw new Error(error.message);
+            }
+            fs.readFile('requirements.txt', 'utf8', function read(err, data) {
+              if (err) throw err;
+              let regexp = /(aws-cdk.+)/g;
+              let result: any = data.match(regexp)
+              for (var i of result) {
+                let datareplaced = i.split("1")[0] + flags.version;
+                data = data.replace(i, datareplaced)
+              }
+              fs.writeFile('requirements.txt', data, function (err) {
+                if (err) throw err;
+                exec('pip install -r requirements.txt -U', function (error, stdout, stderr) {
+                  if (error) {
+                    throw new Error(error.message);
+                  }
+                  console.log(stdout);
+                  cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @${flags.version}.`))
+                });
+              });
+            });
+          })
+        }
       }
+    }
+
+    const { flags } = this.parse(Up)
+    //Input Validation
+    var validation: any = flags.version
+    var regex = /^\d\.\d\d\.\d$/g;
+    if (regex.test(validation)) {
+      update()
+    }
+    else if (flags.version == 'latest') {
+      update()
     }
     //If validation fails throw error
     else {
-      throw new Error('The argument you provided is not in the correct format. Please specify a version: 1.50.0')
+      throw new Error('The version you provided is not in the correct format. Please specify a version: 1.50.0')
     }
   }
 }
