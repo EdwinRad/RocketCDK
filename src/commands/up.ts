@@ -17,7 +17,9 @@ export default class Up extends Command {
       if (fs.existsSync('package.json')) {
         //TS
         cli.action.start('3, 2, 1, zero. All engines running, updating CDK packages.')
+        //init empty array
         var packages1: any = []
+        //read package.json
         fs.readFile('package.json', (err, data: any) => {
           if (err) throw err;
           let packages = JSON.parse(data);
@@ -27,6 +29,7 @@ export default class Up extends Command {
           }
           filtercdkpackages(packages1)
         });
+        //with regex select all aws-cdk packages
         function filtercdkpackages(packages1: any) {
           const filterBy = (str: string) => packages1.filter(
             (item: string) => new RegExp('^' + str.replace(/\*/g, '.*') + '$').test(item)
