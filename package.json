@@ -1,6 +1,6 @@
 {
   "name": "rocketcdk",
-  "version": "0.1.5",
+  "version": "0.1.52",
   "author": "Edwin @EdwinRad",
   "bin": {
     "rocketcdk": "./bin/run"

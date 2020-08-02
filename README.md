@@ -41,7 +41,7 @@ Steps:
 
 
 ## Contributing
-If you have any wishes/tipps, best practices, whatever, just reach out.
+If you have any wishes, tipps or best practices, just reach out.
 
 You can reach me on Twitter or Github:
 [Twitter](https://twitter.com/win_bv)
@@ -84,7 +84,7 @@ OPTIONS
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/up.ts)_
+_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.52/src/commands/up.ts)_
 
 ## `rocketcdk update`
 
@@ -98,5 +98,5 @@ OPTIONS
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.52/src/commands/update.ts)_
 <!-- commandsstop -->
