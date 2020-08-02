@@ -6,46 +6,47 @@
 
 [![License](https://img.shields.io/npm/l/rocketcdk.svg)](https://github.com/EdwinRad/rocketcdk/blob/master/package.json)
 
-
-## Initializes your CDK-project, installs packages and auto-imports them into your Stack.ts.  All in one Command.
-Try me:
-```sh-session
-$ npx rocketcdk init
-```
 ## Update all your packages and CDK version in one step.
-Try me:
+### Works for Typescript and Python
+Update to latest:
 ```sh-session
 $ npx rocketcdk up
 ```
+Update to specific version:
+```sh-session
+$ npx rocketcdk up -v 1.55.0
+```
 
 ## What it does:
-Initialize a new CDK project
-```sh-session
-$ cdk init -l typescript
-```
-Install the AWS-CDK locally in your specified version plus core and assert to minimize the chance of version mismatch.
-```sh-session
-$ npm install aws-cdk@1.45.0 @aws-cdk/core@1.45.0 @aws-cdk/assert@1.45.0
-```
-Install all chosen packages in your specified version.
-```sh-session
-$ npm install @aws-cdk/aws-s3@1.45.0 @aws-cdk/aws-iam@1.45.0
-```
-Writes all your dependencies into your 'stack.ts' file.
 
-```typescript
-import * as s3 from '@aws-cdk/aws-s3'
-import * as accessanalyzer from '@aws-cdk/aws-accessanalyzer'
-import * as amplify from '@aws-cdk/aws-amplify'
-import * as appconfig from '@aws-cdk/aws-appconfig'
-...
-```
-And you're ready to go!
+### Typescript
+Reads **'package.json'**, filters for the **AWS-CDK** packages and installs them with the specified version.
 
-## What it doesn't do...yet
+Also updates these packages locally to minimize the chance of a dependency error:
+- @types/jest
+- aws-cdk@'version'
+- @aws-cdk/assert
 
- - Supports only Typescript at the moment.
- - Gives you a command to install more packages after initalizing.
+Installs no packages globally.
+
+### Python
+Python follows the example from the AWS-CDK documentation on how to work with Python modules.
+[AWS-CDK docs](https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-python.html#python-managemodules)
+
+Steps:
+- **$ pip freeze > requirements.txt**
+- Reads requirements.txt and filters for **AWS-CDK** packages
+- Change the version number on these packages
+- And updates with **$ pip install -r requirements.txt -U**
+
+
+## Contributing
+If you have any wishes/tipps, best practices, whatever, just reach out.
+
+You can reach me on Twitter or Github:
+[Twitter](https://twitter.com/win_bv)
+[Github](https://github.com/EdwinRad/RocketCDK)
+
 
 # Commands
 
@@ -83,7 +84,7 @@ OPTIONS
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.4/src/commands/up.ts)_
+_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/up.ts)_
 
 ## `rocketcdk update`
 
@@ -97,5 +98,5 @@ OPTIONS
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.4/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/update.ts)_
 <!-- commandsstop -->
