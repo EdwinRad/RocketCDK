@@ -51,7 +51,6 @@ And you're ready to go!
 
 <!-- commands -->
 * [`rocketcdk help [COMMAND]`](#rocketcdk-help-command)
-* [`rocketcdk init`](#rocketcdk-init)
 * [`rocketcdk up`](#rocketcdk-up)
 * [`rocketcdk update`](#rocketcdk-update)
 
@@ -71,17 +70,6 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
-
-## `rocketcdk init`
-
-Initializes your CDK-project, installs CDK-packages and imports them into your Stack.ts file.
-
-```
-USAGE
-  $ rocketcdk init
-```
-
-_See code: [src/commands/init.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.2/src/commands/init.ts)_
 
 ## `rocketcdk up`
 
