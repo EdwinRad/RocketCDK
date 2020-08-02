@@ -54,7 +54,7 @@ export default class Up extends Command {
               }
               console.log(stdout);
               console.log(stderr);
-              cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @${flags.version}.`))
+              cli.action.stop(chalk.cyan(`Successfully updated to version ${flags.version}.`))
             })
           });
 
@@ -84,7 +84,7 @@ export default class Up extends Command {
                     throw new Error(error.message);
                   }
                   console.log(stdout);
-                  cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @latest.`))
+                  cli.action.stop(chalk.cyan(`Successfully updated to the latest version.`))
                 });
               });
             });
@@ -112,7 +112,7 @@ export default class Up extends Command {
                     throw new Error(error.message);
                   }
                   console.log(stdout);
-                  cli.action.stop(chalk.cyan(`LIFTOFF. We have a liftoff. Liftoff on CDK @${flags.version}.`))
+                  cli.action.stop(chalk.cyan(`Successfully updated to version ${flags.version}.`))
                 });
               });
             });
