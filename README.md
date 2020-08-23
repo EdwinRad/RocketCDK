@@ -74,17 +74,18 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0
 
 ## `rocketcdk up`
 
-Updates your CDK packages to your favourite version.
+Updates your CDK packages to your favorite version.
 
 ```
 USAGE
   $ rocketcdk up
 
 OPTIONS
+  -c, --caret            Set uses the Semver version of the npm packages.
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.52/src/commands/up.ts)_
+_See code: [src/commands/up.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.2.0/src/commands/up.ts)_
 
 ## `rocketcdk update`
 
@@ -98,5 +99,5 @@ OPTIONS
   -v, --version=version  [default: latest] input a version: RocketCDK up -v 1.50.0
 ```
 
-_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.1.52/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/EdwinRad/rocketcdk/blob/v0.2.0/src/commands/update.ts)_
 <!-- commandsstop -->

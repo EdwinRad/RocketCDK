@@ -5,12 +5,11 @@ import cli from 'cli-ux'
 import * as chalk from 'chalk'
 
 export default class Up extends Command {
-  static description = 'Updates your CDK packages to your favourite version.'
+  static description = 'Updates your CDK packages to your favorite version.'
 
   static flags = {
     version: flags.string({ char: 'v', description: 'input a version: RocketCDK up -v 1.50.0', default: 'latest' }),
-    caret: flags.string({ char: 'e',env: '', description: 'change the default (--save-exact) to caret versions', default: '--save-exact' }),
-
+    caret: flags.boolean({ char: 'c', description: 'Set uses the Semver version of the npm packages.' }),
   }
 
   async run() {
@@ -45,12 +44,15 @@ export default class Up extends Command {
           }
           installpackages()
           var installpackages2 = installpackages1.join(" ")
-          exec(`npm install ${flags.caret}  @types/jest aws-cdk@` + flags.version + ' @aws-cdk/assert@' + flags.version, function (error, stdout, stderr) {
+          var caret = '--save-exact'
+          if (flags.caret) { var caret = ''}
+
+          exec(`npm install ${caret}  @types/jest aws-cdk@` + flags.version + ' @aws-cdk/assert@' + flags.version, function (error, stdout, stderr) {
             if (error) {
               throw new Error(error.message);
             }
             console.log(stdout);
-            exec(`npm install ${flags.caret}` + installpackages2, function (error, stdout, stderr) {
+            exec(`npm install ${caret} ` + installpackages2, function (error, stdout, stderr) {
               if (error) {
                 throw new Error(error.message);
               }
