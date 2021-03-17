@@ -44,7 +44,7 @@ Steps:
 If you have any wishes, tipps or best practices, just reach out.
 
 You can reach me on Twitter or Github:
-[Twitter](https://twitter.com/win_bv)
+[Twitter](https://twitter.com/edwin4_)
 [Github](https://github.com/EdwinRad/RocketCDK)
 
 
